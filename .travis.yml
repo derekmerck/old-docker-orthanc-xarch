@@ -13,12 +13,12 @@ addons:
       - docker-ce
 
 env:
+  SERVICE="orthanc"
 
   matrix:
-    - SERVICE="orthanc" ARCH_TAG="amd64"
-#    - SERVICE="orthanc" ARCH_TAG="arm32v7"
-#    - SERVICE="orthanc" ARCH_TAG="arm64v8"
-
+    - ARCH_TAG="amd64"
+#    - ARCH_TAG="arm32v7"
+#    - ARCH_TAG="arm64v8"
 
 before_install:
 
@@ -26,12 +26,18 @@ before_install:
   - mkdir -p $HOME/.docker
   - echo '{"experimental":"enabled"}' > "$HOME/.docker/config.json"
 
+  - pip3 install pyyaml  # for manifest-it
+
+install:
+
   # Build image
   - docker-compose build $SERVICE-$ARCH_TAG
+
+after_success:
 
   # Login to docker for push
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
   # manifest and push
-  - python3 manifest-it.py orthanc-xarch.manifest.yml
+  - python3 manifest-it.py $SERVICE-xarch.manifest.yml
 

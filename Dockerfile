@@ -2,7 +2,6 @@
 # Derek Merck, Spring 2018
 
 ARG RESIN_ARCH="intel-nuc"
-#ARG RESIN_ARCH="raspberrypi3"
 
 FROM resin/${RESIN_ARCH}-debian:stretch
 MAINTAINER Derek Merck <derek_merck@brown.edu>
@@ -52,7 +51,7 @@ VOLUME /var/lib/orthanc/db/
 EXPOSE 8042 4242
 
 ENV TZ=America/New_York
-# Enable resin.io's systemd init system
-ENV INITSYSTEM on
+# Disable resin.io's systemd init system
+ENV INITSYSTEM off
 
 CMD /usr/local/sbin/Orthanc /etc/orthanc/orthanc.json

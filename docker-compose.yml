@@ -7,6 +7,8 @@ services:
   orthanc-amd64:
     build:
       context: .
+      args:
+        ORX_BRANCH: $ORX_BRANCH
     image: derekmerck/orthanc:$ORX_TAG-amd64
 
   orthanc-arm32v7:
@@ -14,4 +16,5 @@ services:
       context: .
       args:
         RESIN_ARCH: raspberrypi3
+        ORX_BRANCH: $ORX_BRANCH
     image: derekmerck/orthanc:$ORX_TAG-arm32v7

@@ -51,6 +51,12 @@ Most low-power single board computers such as the Raspberry Pi and Beagleboard a
 $ docker-compose build orthanc-arm32v7
 ```
 
+Build Orthanc 1.3.2 (pre-threading)
+
+```bash
+$ ORX_TAG="or132" ORX_BRANCH="Orthanc-1.3.2" docker-compose build orthanc-arm32v7
+```
+
 [Raspberry Pi]: https://www.raspberrypi.org
 [Beagleboard]: https://beagleboard.org
 

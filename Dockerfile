@@ -1,5 +1,5 @@
 # xArch Orthanc Release Image
-# Derek Merck, Spring 2018
+# Derek Merck, Summer 2018
 
 ARG RESIN_ARCH="intel-nuc"
 

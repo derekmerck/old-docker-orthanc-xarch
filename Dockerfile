@@ -29,7 +29,10 @@ RUN apt update  \
       libpugixml-dev \
     && apt-get clean
 
-RUN hg clone 'https://bitbucket.org/sjodogne/orthanc' '/opt/orthanc/source' \
+ARG ORX_BRANCH="master"
+#ARG ORTHANC_BRANCH="Orthanc-1.3.2"
+
+RUN hg clone 'https://bitbucket.org/sjodogne/orthanc' '-r' $ORX_BRANCH '/opt/orthanc/source' \
     && mkdir '/opt/orthanc/build' \
     && chdir '/opt/orthanc/build' \
     && cmake -DALLOW_DOWNLOADS=ON \

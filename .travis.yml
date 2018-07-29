@@ -13,12 +13,11 @@ addons:
       - docker-ce
 
 env:
-  SERVICE="orthanc"
+  - SERVICE="orthanc"
 
   matrix:
-    - ARCH_TAG="amd64"
-#    - ARCH_TAG="arm32v7"
-#    - ARCH_TAG="arm64v8"
+    - ORX_BRANCH="Orthanc-1.3.2" ORX_TAG="or132" ARCH_TAG="amd64"
+    - ORX_BRANCH="Orthanc-1.4.1" ORX_TAG="or141" ARCH_TAG="amd64"
 
 before_install:
 
@@ -31,7 +30,7 @@ before_install:
 install:
 
   # Build image
-  - docker-compose build $SERVICE-$ARCH_TAG
+  - docker-compose build $SERVICE-$ARCH_TAG --buidargs ORX_BRANCH=$ORX_BRANCH
 
 script: true
 

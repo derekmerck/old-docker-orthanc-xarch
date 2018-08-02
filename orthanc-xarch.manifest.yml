@@ -1,4 +1,4 @@
-- image: "derekmerck/orthanc:or123"
+- image: "derekmerck/orthanc:or132"
 
   manifests:
     - image: "derekmerck/orthanc:or132-amd64"
@@ -16,12 +16,12 @@
 - image: "derekmerck/orthanc:latest"
 
   manifests:
-    - image: "derekmerck/orthanc:or141-amd64"
+    - image: "derekmerck/orthanc:default-amd64"
       platform:
         architecture: amd64
         os: linux
 
-    - image: "derekmerck/orthanc:or141-arm32v7"
+    - image: "derekmerck/orthanc:default-arm32v7"
       platform:
         architecture: arm
         variant: v7

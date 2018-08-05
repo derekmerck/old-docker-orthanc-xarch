@@ -17,7 +17,7 @@ env:
     - SERVICE="orthanc"
 
   matrix:
-    - ORX_BRANCH="Orthanc-1.3.2" ORX_TAG="or132" ARCH_TAG="amd64"
+#    - ORX_BRANCH="Orthanc-1.3.2" ORX_TAG="or132" ARCH_TAG="amd64"
     - ORX_BRANCH="default" ORX_TAG="default" ARCH_TAG="amd64"
 
 before_install:

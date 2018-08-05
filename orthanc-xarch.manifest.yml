@@ -12,6 +12,12 @@
         variant: v7
         os: linux
 
+    - image: "derekmerck/orthanc:or132-arm64v8"
+      platform:
+        architecture: arm
+        variant: v8
+        os: linux
+
 
 - image: "derekmerck/orthanc:latest"
 

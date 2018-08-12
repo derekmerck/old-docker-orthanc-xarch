@@ -27,6 +27,7 @@ RUN apt update  \
       libwrap0-dev \
       libjsoncpp-dev \
       libpugixml-dev \
+      libgdcm-tools \
     && apt-get clean
 
 ARG ORX_BRANCH="master"

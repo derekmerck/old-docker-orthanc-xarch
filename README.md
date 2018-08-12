@@ -8,7 +8,7 @@ Derek Merck
 Rhode Island Hospital and Brown University  
 Providence, RI  
 
-Build multi-arch [Orthanc](https://www.orthanc-server.com) DICOM-node Docker images for embedded systems.
+Build multi-arch [Orthanc](https://www.orthanc-server.com) DICOM-node Docker images for embedded systems.  Includes `libgdcm` for plug-ins.
 
 
 Use It

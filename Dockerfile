@@ -28,6 +28,7 @@ RUN apt update  \
       libjsoncpp-dev \
       libpugixml-dev \
       libgdcm-tools \
+      postgresql-server-dev-all \
     && apt-get clean
 
 ARG ORX_BRANCH="master"

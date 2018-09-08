@@ -33,22 +33,29 @@ RUN apt update  \
 ARG ORX_BRANCH="master"
 #ARG ORTHANC_BRANCH="Orthanc-1.3.2"
 
-RUN hg clone 'https://bitbucket.org/sjodogne/orthanc' '-r' $ORX_BRANCH '/opt/orthanc/source' \
+# Get the number of available cores to speed up the builds
+RUN COUNT_CORES=`grep -c ^processor /proc/cpuinfo`
+    && echo "Will use $COUNT_CORES parallel jobs to build Orthanc"
+
+RUN hg clone 'https://bitbucket.org/sjodogne/orthanc-postgresql' '-r' $ORX_BRANCH '/opt/orthanc/source' \
     && mkdir '/opt/orthanc/build' \
     && chdir '/opt/orthanc/build' \
     && cmake -DALLOW_DOWNLOADS=ON \
           -DUSE_SYSTEM_MONGOOSE=OFF \
           -DUSE_GOOGLE_TEST_DEBIAN_PACKAGE=ON \
           -DDCMTK_LIBRARIES=dcmjpls \
-          -DSTATIC_BUILD=ON \
+#          -DSTATIC_BUILD=ON \
           -DCMAKE_BUILD_TYPE=Release \
           /opt/orthanc/source \
-    && make \
+    && make -j$COUNT_CORES \
     && make install \
     && mkdir /var/lib/orthanc \
     && mkdir /etc/orthanc
 
 COPY orthanc.json /etc/orthanc
+
+COPY libOrthancPostgreSQLIndex.so /usr/share/orthanc/plugins/
+COPY libOrthancPostgreSQLStorage.so /usr/share/orthanc/plugins/
 
 VOLUME /var/lib/orthanc/db/
 

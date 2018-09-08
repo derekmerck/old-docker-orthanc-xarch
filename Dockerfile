@@ -61,6 +61,7 @@ RUN hg clone 'https://bitbucket.org/sjodogne/orthanc-postgresql' '/opt/orthanc-p
     && cmake -DALLOW_DOWNLOADS=ON \
           -DUSE_GOOGLE_TEST_DEBIAN_PACKAGE=ON \
           -DUSE_SYSTEM_JSONCPP:BOOL=OFF \
+          -DCMAKE_BUILD_TYPE=Release \
           /opt/orthanc-postgresql/source \
     && make -j$COUNT_CORES
 

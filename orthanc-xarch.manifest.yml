@@ -33,3 +33,8 @@
         variant: v7
         os: linux
 
+    - image: "derekmerck/orthanc:default-arm64v8"
+      platform:
+        architecture: arm
+        variant: v8
+        os: linux

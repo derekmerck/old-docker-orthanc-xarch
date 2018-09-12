@@ -38,7 +38,7 @@ ARG ORX_BRANCH="master"
 RUN COUNT_CORES=`grep -c ^processor /proc/cpuinfo` \
     && echo "Will use $COUNT_CORES parallel jobs to build Orthanc"
 
-RUN hg clone 'https://bitbucket.org/sjodogne/orthanc' '-r' $ORX_BRANCH '/opt/orthanc/source' \
+RUN hg clone 'https://bitbucket.org/sjodogne/orthanc' '/opt/orthanc/source' \
     && mkdir '/opt/orthanc/build' \
     && chdir '/opt/orthanc/build' \
     && cmake -DALLOW_DOWNLOADS=ON \
